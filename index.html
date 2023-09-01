@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World!</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self'" />
+  <meta http-equiv="X-Content-Security-Policy" content="default-src *; script-src 'self'" />
+</head>
+
+<body>
+  <h1>Hello World!</h1>
+  <input type="text" id="nameInput" />
+  <button id="consultaButton">Consultar</button>
+  <br />
+  <button id="startButton">Start Server</button>
+  <button id="stopButton" disabled>Stop Server</button>
+  <h3 id="serverStatus">Server Stoped!</h3>
+
+  <script src="./src/renderer.js"></script>
+</body>
+
+</html>

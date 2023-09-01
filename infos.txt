@@ -1,0 +1,22 @@
+sistema de test com bot
+front end -> ReactJS
+back end -> NodeJS/Express
+aplicação -> ElectronJS
+
+função de cada um
+Front -> interação do administrador do sistema
+Back -> administrar bot e serviços de api
+Aplicação -> executar toda a abordagem de Front(irá aparecer na tela do electron) e Back(será executado pelo electron)
+
+funções BOT
+
+Listar todos os contatos
+Listar todas as mensagens de um contato
+Listar mensagens recebidas
+resposta automatica
+desligar resposta automatica de um contato
+salvar cliente
+salvar endereço
+salvar pedido
+avisar que pedido está em produção
+avisar que pedido saiu para entrega
