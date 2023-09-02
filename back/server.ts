@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import app from './app';
+import { httpServer } from './app';
 import './webSocket';
 
 const port = 3000;
 let InstanceServer: any = null;
 
 const InitServer = (): void => {
-  InstanceServer = app.listen(port, () =>
+  InstanceServer = httpServer.listen(port, () =>
     console.log(`Server 🏃🏾 on 🚪 ${port}`)
   );
 };

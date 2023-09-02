@@ -8,9 +8,12 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
+      devTools: true,
     },
     width: 1024,
   });
+
+  mainWindow.webContents.openDevTools();
 
   // mainWindow.loadFile(path.join(__dirname, '../index.html'));
   mainWindow.loadURL('http://localhost:3000/front/');
@@ -27,8 +30,6 @@ function createWindow() {
     StopServer();
     app.quit();
   });
-
-  mainWindow.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {

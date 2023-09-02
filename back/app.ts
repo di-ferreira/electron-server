@@ -2,12 +2,15 @@ import cors from 'cors';
 import express, { Request, Response } from 'express';
 import http from 'http';
 import path from 'path';
+import { Server } from 'socket.io';
 
 const app = express();
 
 app.use(cors());
 
 const httpServer = http.createServer(app);
+
+const io = new Server(httpServer, { cors: { origin: '*' } });
 
 app.get('/', (req: Request, res: Response) => {
   const { name } = req.query;
@@ -20,4 +23,4 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use('/front', express.static(path.join(__dirname, 'public')));
 
-export default app;
+export { httpServer, io };

@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import reactLogo from './assets/react.svg';
-import { api } from './services';
+import { api, socket } from './services';
 import viteLogo from '/vite.svg';
 
 interface iResult {
@@ -17,6 +17,14 @@ function App() {
     const { result } = response.data;
     setResult(JSON.stringify(result));
   };
+
+  useEffect(() => {
+    socket.connect();
+    socket.on('welcome', () => {
+      socket.emit('test');
+      console.log('welcome client connected');
+    });
+  }, []);
 
   return (
     <>
@@ -42,4 +50,3 @@ function App() {
 }
 
 export default App;
-

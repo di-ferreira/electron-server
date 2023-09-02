@@ -1,9 +1,9 @@
-// import { io } from './app';
+import { io } from './app';
 
-// io.on('connection', (socket) => {
-//   io.emit('welcome');
+io.on('connection', (socket) => {
+  io.emit('welcome');
 
-//   socket.on('test', () => {
-//     console.log('teste recebido.');
-//   });
-// });
+  socket.on('test', () => {
+    console.log('teste recebido.');
+  });
+});
