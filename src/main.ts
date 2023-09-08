@@ -1,35 +1,31 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
-import { InitServer, StopServer } from '../back/server';
+import AppConfig from './AppConfig';
+import { InitServer, StopServer } from './back/server';
 
+const PORT = AppConfig.PORT;
 function createWindow() {
   const mainWindow = new BrowserWindow({
+    width: 1024,
     height: 800,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
       devTools: true,
     },
-    width: 1024,
   });
 
-  mainWindow.webContents.openDevTools();
-
-  // mainWindow.loadFile(path.join(__dirname, '../index.html'));
-  mainWindow.loadURL('http://localhost:3000/front/');
   InitServer();
-  ipcMain.on('start-server', () => {
-    InitServer();
-  });
 
-  ipcMain.on('stop-server', () => {
-    StopServer();
-  });
+  mainWindow.loadURL(`http://localhost:${PORT}/front/`);
 
   mainWindow.on('closed', () => {
     StopServer();
     app.quit();
   });
+
+  mainWindow.maximize();
+  mainWindow.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {

@@ -6,7 +6,6 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: path.join(__dirname, '..', 'dist', 'back/public'),
+    outDir: path.join(__dirname, '../../', 'dist', 'back/public'),
   },
 });
-
