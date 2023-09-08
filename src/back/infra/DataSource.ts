@@ -6,10 +6,15 @@ import {
 } from 'typeorm';
 
 import ApppConfig from '../../AppConfig';
+import { Address } from '../modules/Address/Entity';
+import { Customer } from '../modules/Customer/Entity';
 
 const typeDB = ApppConfig.TYPE;
 
-const ENTITIES: MixedList<string | Function | EntitySchema<any>> = [];
+const ENTITIES: MixedList<string | Function | EntitySchema<any>> = [
+  Customer,
+  Address,
+];
 
 let DSConfigSQLite: DataSourceOptions = {
   type: 'better-sqlite3',
@@ -26,6 +31,7 @@ let DSConfigMySQL: DataSourceOptions = {
   password: ApppConfig.PASSWORD,
   database: ApppConfig.DATABASE_NAME,
   entities: ENTITIES,
+  synchronize: ApppConfig.SINCRONIZE,
 };
 
 let DSConfigMariaDB: DataSourceOptions = {
@@ -36,6 +42,7 @@ let DSConfigMariaDB: DataSourceOptions = {
   password: ApppConfig.PASSWORD,
   database: ApppConfig.DATABASE_NAME,
   entities: ENTITIES,
+  synchronize: ApppConfig.SINCRONIZE,
 };
 
 let DSConfig: DataSourceOptions = {} as DataSourceOptions;

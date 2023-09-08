@@ -1,6 +1,6 @@
 const CONFIG = {
   PORT: 3000,
-  SINCRONIZE: false,
+  SINCRONIZE: true,
   TYPE: 'mariadb',
   HOST: 'localhost',
   PORT_DB: 3307,
