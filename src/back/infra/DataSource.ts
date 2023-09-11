@@ -7,13 +7,29 @@ import {
 
 import ApppConfig from '../../AppConfig';
 import { Address } from '../modules/Address/Entity';
+import { CashRegister } from '../modules/CashRegister/Entity';
 import { Customer } from '../modules/Customer/Entity';
+import { Menu } from '../modules/Menu/Entity';
+import { Order } from '../modules/Order/Entity';
+import { ItemOrder } from '../modules/OrderItem/Entity';
+import { Payment } from '../modules/Payment/Entity';
+import { PaymentMethod } from '../modules/PaymentMethod/Entity';
+import { Product } from '../modules/Product/Entity';
+import { TypeMenu } from '../modules/TypeMenu/Entity';
 
 const typeDB = ApppConfig.TYPE;
 
 const ENTITIES: MixedList<string | Function | EntitySchema<any>> = [
-  Customer,
   Address,
+  CashRegister,
+  Customer,
+  Menu,
+  Order,
+  ItemOrder,
+  Payment,
+  PaymentMethod,
+  Product,
+  TypeMenu,
 ];
 
 let DSConfigSQLite: DataSourceOptions = {

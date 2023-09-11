@@ -1,6 +1,7 @@
 import { iExistAddress } from '../../../ProjectTypes/Address/iAddressService';
 import {
   iCreateCustomer,
+  iCustomer,
   iCustomerRepository,
 } from '../../../ProjectTypes/Customer/iCustomerService';
 import AppError from '../../../errors/AppError';
@@ -21,7 +22,7 @@ class CreateCustomerService {
     name,
     phone,
     address,
-  }: iCreateCustomer): Promise<Customer> {
+  }: iCreateCustomer): Promise<iCustomer> {
     const phoneExists = await this.customerRepository.findByPhone(phone);
     if (phoneExists) {
       throw new AppError('There is already one customer with this phone');

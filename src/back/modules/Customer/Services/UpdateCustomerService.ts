@@ -4,7 +4,6 @@ import {
   iUpdatedCustomer,
 } from '../../../ProjectTypes/Customer/iCustomerService';
 import AppError from '../../../errors/AppError';
-import { Customer } from '../Entity';
 import CustomerRepository from '../Repository';
 
 class UpdateCustomerService {
@@ -18,7 +17,7 @@ class UpdateCustomerService {
     id,
     name,
     phone,
-  }: iUpdatedCustomer): Promise<Customer> {
+  }: iUpdatedCustomer): Promise<iCustomer> {
     const customer = await this.customerRepository.findById(id);
 
     const customerByPhone = await this.customerRepository.findByPhone(phone);

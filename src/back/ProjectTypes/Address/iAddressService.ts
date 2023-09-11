@@ -1,5 +1,6 @@
 import { SearchParams } from '..';
 import { iCustomer } from '../Customer/iCustomerService';
+import { iOrder } from '../Order/iOrder';
 
 export interface iCreateAddress {
   street: string;
@@ -52,6 +53,7 @@ export interface iAddress {
   state: string;
   complement?: string;
   customer: iCustomer;
+  order?: iOrder[];
 }
 
 export interface iAddressList {

@@ -1,9 +1,9 @@
 import {
+  iCustomer,
   iCustomerRepository,
   iDeleteCustomer,
 } from '../../../ProjectTypes/Customer/iCustomerService';
 import AppError from '../../../errors/AppError';
-import { Customer } from '../Entity';
 import CustomerRepository from '../Repository';
 
 class DeleteCustomerService {
@@ -13,7 +13,7 @@ class DeleteCustomerService {
     this.customerRepository = new CustomerRepository();
   }
 
-  public async execute({ id }: iDeleteCustomer): Promise<Customer> {
+  public async execute({ id }: iDeleteCustomer): Promise<iCustomer> {
     const customer = await this.customerRepository.findById(id);
 
     if (!customer) {
