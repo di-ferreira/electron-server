@@ -36,9 +36,8 @@ export class Menu implements iMenu {
   active: boolean;
 
   @OneToMany((type) => ItemOrder, (orderMenu) => orderMenu.menu, {
-    nullable: false,
+    cascade: true,
   })
-  @JoinColumn({ name: 'item_order_id' })
   itemOrder: iItemOrder[];
 
   @ManyToOne((type) => TypeMenu, (typeMenu) => typeMenu.menu, {

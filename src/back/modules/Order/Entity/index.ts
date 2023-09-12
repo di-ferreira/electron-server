@@ -28,9 +28,12 @@ export class Order implements iOrder {
   @ManyToOne((type) => Customer, (customer) => customer.id, {
     eager: true,
     nullable: false,
-    onDelete: 'SET NULL',
   })
-  @JoinColumn({ name: 'cliente_id' })
+  @JoinColumn({
+    name: 'cliente_id',
+    referencedColumnName: 'id',
+    foreignKeyConstraintName: 'orderClientForeignKey',
+  })
   customer: iCustomer;
 
   @Column({ type: 'decimal', precision: 10, scale: 2, default: 0.0 })
@@ -53,9 +56,14 @@ export class Order implements iOrder {
 
   @ManyToOne(() => Address, (address) => address.order, {
     nullable: true,
-    onDelete: 'SET NULL',
   })
-  @JoinColumn([{ name: 'address_id', referencedColumnName: 'id' }])
+  @JoinColumn([
+    {
+      name: 'address_id',
+      referencedColumnName: 'id',
+      foreignKeyConstraintName: 'orderAddressForeignKey',
+    },
+  ])
   deliveryAddress: iAddress;
 
   @OneToMany(() => Payment, (payment) => payment.order)
@@ -65,7 +73,13 @@ export class Order implements iOrder {
     eager: true,
     onDelete: 'NO ACTION',
   })
-  @JoinColumn([{ name: 'cash_register_id', referencedColumnName: 'id' }])
+  @JoinColumn([
+    {
+      name: 'cash_register_id',
+      referencedColumnName: 'id',
+      foreignKeyConstraintName: 'orderCashRegisterForeignKey',
+    },
+  ])
   cashRegister: iCashRegister;
 
   @CreateDateColumn({ name: 'created_at' })

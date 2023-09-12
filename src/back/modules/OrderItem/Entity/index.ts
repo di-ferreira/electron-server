@@ -29,18 +29,26 @@ export class ItemOrder implements iItemOrder {
 
   @ManyToOne((type) => Order, (order) => order.items, {
     nullable: false,
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
   })
-  @JoinColumn([{ name: 'order_id', referencedColumnName: 'id' }])
+  @JoinColumn([
+    {
+      name: 'order_id',
+      referencedColumnName: 'id',
+      foreignKeyConstraintName: 'orderItemForeignKey',
+    },
+  ])
   order: iOrder;
 
   @ManyToOne((type) => Menu, (menu) => menu.itemOrder, {
-    eager: true,
     nullable: false,
-    onDelete: 'SET NULL',
   })
-  @JoinColumn([{ name: 'menu_id', referencedColumnName: 'id' }])
+  @JoinColumn([
+    {
+      name: 'menu_id',
+      referencedColumnName: 'id',
+      foreignKeyConstraintName: 'orderItemMenuForeignKey',
+    },
+  ])
   menu: iMenu;
 
   @CreateDateColumn({ name: 'created_at' })

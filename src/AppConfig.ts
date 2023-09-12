@@ -3,7 +3,7 @@ const CONFIG = {
   SINCRONIZE: true,
   TYPE: 'mariadb',
   HOST: 'localhost',
-  PORT_DB: 3307,
+  PORT_DB: 3306,
   DATABASE_NAME: 'api_delivery',
   USERNAME: 'root',
   PASSWORD: '',
