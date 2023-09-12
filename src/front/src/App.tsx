@@ -12,10 +12,22 @@ function App() {
   const [result, setResult] = useState<string>('');
   const [NameInput, setNameInput] = useState<string>('');
 
-  const TestAPI = async (name: string) => {
-    const response = await api.get<iResult>(`/?name=${name}`);
-    const { result } = response.data;
-    setResult(JSON.stringify(result));
+  // const TestAPI = async (name: string) => {
+  //   const response = await api.get<iResult>(`/?name=${name}`);
+  //   const { result } = response.data;
+  //   setResult(JSON.stringify(result));
+  // };
+
+  const ClientList = async (phone?: string) => {
+    if (phone !== '') {
+      const response = await api.get<iResult>(`/customers/${phone}`);
+      const result = response.data;
+      setResult(JSON.stringify(result));
+    } else {
+      const response = await api.get<iResult>(`/customers`);
+      const result = response.data;
+      setResult(JSON.stringify(result));
+    }
   };
 
   useEffect(() => {
@@ -39,7 +51,7 @@ function App() {
       <h1>Vite + React</h1>
       <div className='card'>
         <input type='text' onChange={(e) => setNameInput(e.target.value)} />
-        <button onClick={() => TestAPI(NameInput)}>Fetch</button>
+        <button onClick={() => ClientList(NameInput)}>Fetch</button>
         <p>{result}</p>
       </div>
       <p className='read-the-docs'>
