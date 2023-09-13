@@ -8,6 +8,7 @@
     "watch": "tsc -w",
     "lint": "eslint -c .eslintrc --ext .ts ./src",
     "front": "cd src/front && yarn build && cd .. ",
+    "preview": "cd src/front && yarn dev && cd .. ",
     "start": "yarn build && electron ./dist/main.js",
     "electron": "yarn build && electron ./dist/main.js",
     "dev": "yarn front && wait-on yarn front && cd .."
@@ -37,7 +38,7 @@
     "typescript": "^5.2.2",
     "wait-on": "^7.0.1"
   },
-  "dependencies": {
+  "dependencies": {    
     "@types/better-sqlite3": "^7.6.4",
     "cors": "^2.8.5",
     "express": "^4.18.2",
