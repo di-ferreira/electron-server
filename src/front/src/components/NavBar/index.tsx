@@ -1,54 +1,26 @@
 import {
-  faArrowLeft,
-  faArrowRight,
   faFileInvoiceDollar,
   faFileLines,
   faHouseChimney,
-  faPowerOff,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
-import Logo from '../../assets/astro-burguer.png';
+import React from 'react';
+import LogoImage from '../../assets/astro-burguer.png';
 import { NavButton } from '../NavButton';
-import {
-  Container,
-  ContainerNav,
-  NavigationContainer,
-  OpenCloseButton,
-  Top,
-} from './styles';
+import { Container, ContainerNav, Logo, NavigationContainer } from './styles';
 
-interface iNavBar {
-  Open: boolean;
-}
-
-export const NavBar: React.FC<iNavBar> = ({ Open }) => {
-  const [OpenCloseNavBar, SetOpenCloseNavBar] = useState<boolean>(Open);
-
-  const Logout = () => {
-    <Navigate to='/login' replace />;
-  };
-  const IconOpenCloseButton = OpenCloseNavBar ? (
-    <FontAwesomeIcon icon={faArrowLeft} />
-  ) : (
-    <FontAwesomeIcon icon={faArrowRight} />
-  );
+export const NavBar: React.FC = () => {
   return (
-    <Container isOpen={OpenCloseNavBar}>
-      <OpenCloseButton onClick={() => SetOpenCloseNavBar(!OpenCloseNavBar)}>
-        {IconOpenCloseButton}
-      </OpenCloseButton>
+    <Container>
       <ContainerNav>
-        <Top>
-          <img src={Logo} alt='Logo Astro Burguer' /> Astro Burguer
-        </Top>
+        <Logo>
+          <img src={LogoImage} alt='Logo Astro Burguer' />
+        </Logo>
         <NavigationContainer>
           <NavButton
+            active
             onClick={() => {}}
             Icon={faHouseChimney}
-            Text='dashboard'
             Link='home'
           />
           <NavButton
@@ -60,27 +32,32 @@ export const NavBar: React.FC<iNavBar> = ({ Open }) => {
           <NavButton
             onClick={() => {}}
             Icon={faFileLines}
-            Text='orçamentos'
-            Link='orcamentos'
+            Text='pedidos'
+            Link='pedidos'
           />
           <NavButton
             onClick={() => {}}
             Icon={faFileInvoiceDollar}
-            Text='pré-vendas'
-            Link='pre-vendas'
+            Text='cardápio'
+            Link='cardápio'
           />
           <NavButton
             onClick={() => {}}
             Icon={faFileInvoiceDollar}
-            Text='vendas'
-            Link='vendas'
+            Text='caixa'
+            Link='caixa'
           />
           <NavButton
-            Icon={faPowerOff}
-            Text='sair'
-            Link='logout'
-            isButton={true}
-            onClick={Logout}
+            onClick={() => {}}
+            Icon={faFileInvoiceDollar}
+            Text='bot'
+            Link='bot'
+          />
+          <NavButton
+            onClick={() => {}}
+            Icon={faFileInvoiceDollar}
+            Text='configurações'
+            Link='configurações'
           />
         </NavigationContainer>
       </ContainerNav>

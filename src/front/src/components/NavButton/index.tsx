@@ -3,9 +3,10 @@ import React from 'react';
 import { Container, IconButton, NavButtonLink } from './styles';
 
 interface iNavButton {
-  Text: string;
+  Text?: string;
   Link: string;
   Icon: IconProp;
+  active?: boolean;
   isButton?: boolean;
   onClick?: () => void;
 }
@@ -15,14 +16,15 @@ export const NavButton: React.FC<iNavButton> = ({
   Icon,
   Link,
   onClick,
+  active,
 }) => {
   const Click = () => {
     onClick && onClick();
   };
 
   return (
-    <Container active={true} onClick={() => Click()}>
-      <NavButtonLink active={true} to={Link}>
+    <Container active={active ? active : false} onClick={() => Click()}>
+      <NavButtonLink active={active ? active : false} to={Link}>
         <IconButton icon={Icon} />
         <span>{Text}</span>
       </NavButtonLink>

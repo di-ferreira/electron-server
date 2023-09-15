@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { HEXToRGB } from '../../../utils/index';
+import { Light, Red } from '../../colors';
 
 interface isActiveLink {
   active: boolean;
@@ -9,21 +9,21 @@ interface isActiveLink {
 
 export const Container = styled.li<isActiveLink>`
   width: 100%;
-  height: 4.4rem;
+  height: 6.5rem;
   display: flex;
   align-items: center;
-  background: ${(props) =>
+  justify-content: center;
+  background: ${(props) => (props.active ? `${Light.main}` : 'transparent')};
+  box-shadow: ${(props) =>
     props.active
-      ? `rgba(${HEXToRGB(props.theme.colors.onGray)}, 0.1)`
-      : 'transparent'};
-  padding-left: ${(props) => (props.active ? '0rem' : '0.6rem')};
-  padding-top: 3%;
+      ? '0px 2px 4px 1px rgba(0, 0, 0, 0.5);'
+      : '0px 0px 0px 0px rgba(0, 0, 0, 0.75)'};
   transition: all 0.3s ease;
   &:hover {
     padding-left: 0rem;
     border-left-width: 0.6rem;
-    background: ${(props) =>
-      `rgba(${HEXToRGB(props.theme.colors.onGray)}, 0.1)`};
+    background: ${Light.main};
+    box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
   }
 `;
@@ -32,41 +32,31 @@ export const NavButtonLink = styled(Link)<isActiveLink>`
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: baseline;
-  color: ${(props) =>
-    props.active ? props.theme.colors.secondary : props.theme.colors.onGray};
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: ${(props) => (props.active ? Red.main : Light.main)};
   font-weight: ${(props) => (props.active ? '700' : '400')};
   text-decoration: none;
   text-transform: capitalize;
   font-variant: small-caps;
+  font-size: 3rem;
+
+  span {
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    opacity: 1;
+  }
+  &:hover {
+    color: ${Red.main};
+    span {
+      transition: all 0.3s ease;
+      opacity: 0;
+      // display: none;
+    }
+  }
 `;
 
 export const IconButton = styled(FontAwesomeIcon)`
   margin: 0.5rem 1rem;
-`;
-
-export const ContainerButton = styled.button`
-  cursor: pointer;
-  width: 100%;
-  height: 4.4rem;
-  display: flex;
-  align-items: baseline;
-  color: ${(props) => props.theme.colors.onGray};
-  font-weight: 400;
-  font-size: 1.6rem;
-  text-decoration: none;
-  text-transform: capitalize;
-  font-variant: small-caps;
-  border: none;
-  background: transparent;
-  padding-left: 0.6rem;
-  padding-top: 3%;
-  transition: all 0.3s ease;
-  &:hover {
-    padding-left: 0rem;
-    border-left-width: 0.6rem;
-    background: ${(props) =>
-      `rgba(${HEXToRGB(props.theme.colors.onGray)}, 0.1)`};
-    transition: all 0.3s ease;
-  }
 `;
