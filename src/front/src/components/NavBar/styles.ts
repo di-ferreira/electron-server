@@ -17,6 +17,7 @@ export const Logo = styled.h1`
 
 export const NavigationContainer = styled.ul`
   width: 100%;
+  height: 80%;
 `;
 
 export const Container = styled.nav`
@@ -54,4 +55,5 @@ export const ContainerNav = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
 `;
