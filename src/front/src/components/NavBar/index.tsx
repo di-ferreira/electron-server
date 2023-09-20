@@ -35,7 +35,7 @@ export const NavBar: React.FC = () => {
   };
 
   const ReturnNav = (item: iNavButton) => {
-    if (item.Link !== 'bot' && item.Link !== 'configurações') {
+    if (item.Link !== 'bot' && item.Link !== 'configurations') {
       return (
         <NavButton
           key={item.Link}
@@ -51,7 +51,7 @@ export const NavBar: React.FC = () => {
   };
 
   const ReturnConfigs = (item: iNavButton) => {
-    if (item.Link === 'bot' || item.Link === 'configurações') {
+    if (item.Link === 'bot' || item.Link === 'configurations') {
       return (
         <NavButton
           key={item.Link}
@@ -78,29 +78,29 @@ export const NavBar: React.FC = () => {
       },
       {
         isActive: false,
-        onClick: () => {
-          console.log('clientes');
-        },
-        Icon: faUsers,
-        Link: 'clientes',
-      },
-      {
-        isActive: false,
         onClick: () => {},
         Icon: faBellConcierge,
-        Link: 'pedidos',
-      },
-      {
-        isActive: false,
-        onClick: () => {},
-        Icon: faFileLines,
-        Link: 'cardápio',
+        Link: 'orders',
       },
       {
         isActive: false,
         onClick: () => {},
         Icon: faCashRegister,
-        Link: 'caixa',
+        Link: 'cash-register',
+      },
+      {
+        isActive: false,
+        onClick: () => {},
+        Icon: faFileLines,
+        Link: 'menu',
+      },
+      {
+        isActive: false,
+        onClick: () => {
+          console.log('clientes');
+        },
+        Icon: faUsers,
+        Link: 'customers',
       },
       {
         isActive: false,
@@ -112,7 +112,7 @@ export const NavBar: React.FC = () => {
         isActive: false,
         onClick: () => {},
         Icon: faCogs,
-        Link: 'configurações',
+        Link: 'configurations',
       },
     ]);
   }, []);
