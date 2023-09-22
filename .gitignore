@@ -10,4 +10,6 @@ dist
 /*/*-lock.json
 /*.png
 /*/*.png
-/bot
+/*-cache
+/*_auth
+/*_cache

@@ -1,16 +1,13 @@
+import '../back/modules/Bot/Bot';
+// import '../back/modules/Bot/index';
 import { io } from './app';
-import WhatsAppBot from './modules/Bot';
 
 io.on('connection', (socket) => {
-  io.emit('welcome');
+  console.log('🚀 SocketID', socket.id);
 
-  const whatsappBot = new WhatsAppBot();
-  const ClientBot = whatsappBot.start('bot');
-
-  socket.on('test', () => {
-    console.log('teste recebido.');
-  });
-  socket.on('botConect', () => {
-    console.log('bot conectado.');
-  });
+  // socket.on('botConect', () => {
+  //   const whatsappBot = new WhatsAppBot();
+  //   console.log('Bot connected');
+  //   const ClientBot = whatsappBot.start('bot');
+  // });
 });
